@@ -1,3 +1,4 @@
+from collections import namedtuple
 from copy import deepcopy
 
 def main():
@@ -9,9 +10,9 @@ def main():
     my_list = [1, 2, 3, 4, 5]
     print(f"list: {my_list}\n")
 
-    # Mixed type list
-    mixed_types = [1, "cat", 0.5, True]
-    print(f"mixed type list: {mixed_types}\n")
+    # Heterogeneous list
+    heterogeneous_list = [1, "cat", 0.5, True]
+    print(f"heterogeneous list: {heterogeneous_list}\n")
 
     # Filled array
     zeros = [0] * 5
@@ -50,17 +51,26 @@ def main():
     print(f"last element: {last}")
     print(f"list: {my_list}\n")
 
-    # Pop first
-    first = my_list.pop(0)
-    print("my_list.pop(0)")
-    print(f"first element: {first}")
-    print(f"list: {my_list}\n")
-
     # Remove at index
     removed = my_list.pop(2)
     print("my_list.pop(2)")
     print(f"removed element: {removed}")
     print(f"list: {my_list}\n")
+
+    # Remove at index using del statement
+    del my_list[0]
+    print("del my_list[0]")
+    print(f"my_list: {my_list}\n")
+
+    # Bulk append to list
+    my_list += [6, 7, 8]
+    print("my_list += [6, 7, 8]")
+    print(f"my_list: {my_list}\n")
+
+    # Delete slice from list
+    del my_list[5:8]
+    print("del my_list[5:8]")
+    print(f"list {my_list}\n")
 
     # Shallow copy
     shallow_copy = [val for val in my_list]
@@ -74,7 +84,6 @@ def main():
     # Merge
     merged = my_list + [6, 7, 8]
     print(f"{my_list} merged with {[6, 7, 8]}: {merged}\n")
-
     # Altnerative (use unpacking): merged = [*my_list, *[6, 7, 8]]
 
     # Map using list comprehension
@@ -139,7 +148,7 @@ def main():
     for i in range(0, len(my_list) - 1):
         for j in range(i + 1, len(my_list)):
             pairs.append([my_list[i], my_list[j]])
-    print(f"all pairs: {pairs}\n")
+    print(f"all pairs in {my_list}: {pairs}\n")
 
     # All triplets
     triplets = []
@@ -147,7 +156,7 @@ def main():
         for j in range(i + 1, len(my_list) - 1):
             for k in range(j + 1, len(my_list)):
                 triplets.append([my_list[i], my_list[j], my_list[k]])
-    print(f"all triplets: {triplets}\n")
+    print(f"all triplets in {my_list}: {triplets}\n")
 
     # Subsequences with length k
     k = 4
@@ -170,7 +179,40 @@ def main():
         subsequences(index + 1, k, subsequence)
 
     subsequences(0, k, [])
-    print(f"all subsquences with length {k}: {result}")
+    print(f"all subsquences in {my_list} with length {k}: {result}\n")
+
+    # Tuples
+    # tuple vs list in python:
+    # https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences
+
+    # Empty tuple
+    empty = ()
+    print(f"Empty tuple: {empty}\n")
+
+    # Singleton tuple
+    singleton = (1,)
+    print(f"Singleton tuple: {singleton}\n")
+
+    # Heterogenous tuple
+    my_tup = (0, 1365, "hello!")
+    print(f"Heterogeneous tuple: {my_tup}\n")
+
+    # Nested tuple
+    nested_tup = my_tup, (1, 2, 3, 4)
+    print(f"Nested tuple: {nested_tup}\n")
+
+    # Unpacking a tuple
+    person_tup = ("John", 24)
+    name, age = person_tup
+    print(f"{person_tup} unpacked: {name}, {age}\n")
+
+    # Named Tuples
+    Person = namedtuple("Person", ["name", "age"])
+    john = Person(name = "John", age = 24) # name is accessible via john[0] or john.name
+    jane = Person(name = "Jane", age = 22) 
+
+    print(f"Hi, my name is {john.name} and I'm {john.age} years old!\n")
+    print(f"Hi, my name is {jane.name} and I'm {jane.age} years old!")
 
 if __name__ == "__main__":
     main()
