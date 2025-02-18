@@ -1,6 +1,4 @@
 (function main() {
-  console.log("Array module executing...\n");
-
   // Empty array
   const empty = [];
 
