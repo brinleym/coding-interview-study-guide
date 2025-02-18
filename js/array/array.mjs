@@ -1,16 +1,23 @@
 (function main() {
   console.log("Array module executing...\n");
 
-  /* Empty array */
+  // Empty array
   const empty = [];
 
-  /* Non-empty array */
+  // Non-empty array
+  // Arrays are dynamic + mutable by default
   const array = [1, 2, 3, 4, 5];
   console.log(`array: ${formatArray(array)}`);
 
+  // Array with mixed types
+  const mixedTypes = [1, true, "cat", 0.5];
+  console.log(`mixedTypes: ${formatArray(mixedTypes)}`);
+
+  // Array initialized with all zeros
   const zeros = new Array(3).fill(0);
   console.log(`zeros: ${formatArray(zeros)}`);
 
+  // Array with elements uninitialized
   const uninitialized = new Array(3);
   console.log(`uninitialized: ${formatArray(uninitialized)}`); // All elements are undefined
 
