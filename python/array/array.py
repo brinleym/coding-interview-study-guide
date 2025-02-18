@@ -11,7 +11,7 @@ def main():
 
     # Mixed type list
     mixed_types = [1, "cat", 0.5, True]
-    print(f"mixex type list: {mixed_types}\n")
+    print(f"mixed type list: {mixed_types}\n")
 
     # Filled array
     zeros = [0] * 5
